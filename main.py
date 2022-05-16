@@ -23,7 +23,7 @@ class board:
 			# self.theta = -90 #target angle
 			self.angle = 0  # current angle
 			self.images = [pygame.image.load(f"images/boid{i}.png") for i in range(90)]
-			self.image = None
+			self.image = self.images[0]
 			self.rotate()
 			self.rect = self.image.get_rect()
 			self.goal = goal
@@ -47,7 +47,8 @@ class board:
 
 		def rotate(self):
 			self.theta = math.atan2(self.x - (self.v[0] + self.x), self.y - (self.v[1] + self.y)) * (180 / math.pi)
-			self.angle = math.floor(self.theta)
+			self.angle = int(math.floor(self.theta))
+      print(self.angle)
 
 		# if self.angle != self.theta:
 		# 	# 	self.image = pygame.transform.rotate(self.image, self.theta)
